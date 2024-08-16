@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEARN HTML</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #1d83b3;
+            background-image: url('bg2.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+        header {
+            background: rgba(12, 34, 205, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 3px solid #000;
+            transition: background 0.5s ease-in-out, padding 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+        }
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('header.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(8px);
+            z-index: -1;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease, transform 0.3s ease, border-bottom 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        nav a:hover {
+            color: #ffd700;
+            transform: scale(1.1);
+            border-bottom: 2px solid #ffd700;
+        }
+        main {
+            padding: 30px;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+        }
+        main:hover {
+            background-color: #f5f5f5;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        footer {
+            background: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            border-top: 3px solid #000;
+            transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+        }
+        footer:hover {
+            background: rgba(51, 51, 51, 1);
+            color: #ddd;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-radius: 8px;
+        }
+        img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border: 2px solid #d2ac15;
+            transition: border-color 0.5s ease;
+        }
+        table:hover {
+            border-color: #f0c23b;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 2px solid #ddd;
+            transition: background-color 0.3s ease, color 0.3s ease, border-bottom 0.3s ease;
+        }
+        th {
+            background-color: #d2ac15;
+            color: #fff;
+            border-bottom: 2px solid #b5890c;
+        }
+        th:hover {
+            background-color: #f0c23b;
+            color: #333;
+            border-bottom: 2px solid #9c7a06;
+        }
+        td:hover {
+            background-color: #fdf4b1;
+            color: #333;
+        }
+        form {
+            margin: 20px 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        form:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        input, textarea, select {
+            margin-bottom: 10px;
+            padding: 12px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        input:focus, textarea:focus, select:focus {
+            background-color: #f5f5f5;
+            border-color: #0c22cd;
+            box-shadow: 0 0 8px rgba(12, 34, 205, 0.3);
+        }
+        ul, ol {
+            margin: 20px 0;
+            padding-left: 20px;
+            transition: padding-left 0.3s ease;
+        }
+        ul:hover, ol:hover {
+            padding-left: 30px;
+        }
+        .video-container {
+            margin: 20px 0;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        .video-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .video-container::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            transition: opacity 0.3s ease;
+            opacity: 0;
+            z-index: 1;
+        }
+        .video-container:hover::before {
+            opacity: 1;
+        }
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            z-index: 0;
+        }
+        button {
+            background-color: #0c22cd;
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #333;
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        .timeline {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .timeline h3 {
+            margin-top: 0;
+        }
+        .timeline-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #0c22cd;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        .timeline-item:hover {
+            background-color: #e0e0e0;
+        }
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            background: #0c22cd;
+            border-radius: 50%;
+        }
+        .quiz-container {
+            margin: 20px 0;
+            padding: 20px;
+            background: #fdfdfd;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .quiz-container h3 {
+            margin-top: 0;
+        }
+        .quiz-container input[type="radio"] {
+            margin-right: 10px;
+        }
+        .expandable {
+            margin: 20px 0;
+            padding: 10px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .expandable:hover {
+            background-color: #d0d0d0;
+        }
+        .expandable-content {
+            display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 6px;
+        }
+        .expandable.active .expandable-content {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>LEARN HTML</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#video1">Video 1</a>
+            <a href="#video2">Video 2</a>
+            <a href="#video3">Video 3</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Home</h2>
+            <p>
+                HTML is a relatively easy language and does not require any formal education. So basically, there are no prerequisites for learning it.
+                HTML is text-based computer coding, and anyone can learn and run it, as long as they understand letters and basic symbols. So, all you need is basic computer knowledge and the ability to work with files.
+            </p>
+            <h3>Why Learn HTML?</h3>
+            <ul>
+                <li>It is the foundation of web development.</li>
+                <li>It is easy to learn and use.</li>
+                <li>It is in high demand for web design jobs.</li>
+            </ul>
+            <div class="timeline">
+                <h3>HTML Timeline</h3>
+                <div class="timeline-item">
+                    <h4>1991</h4>
+                    <p>HTML was created by Tim Berners-Lee as a way to present and link documents on the web.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>1995</h4>
+                    <p>HTML 2.0 was standardized by the IETF, adding support for forms and other features.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>1999</h4>
+                    <p>HTML 4.01 was released, bringing better support for multimedia and web standards.</p>
+                </div>
+                <div class="timeline-item">
+                    <h4>2014</h4>
+                    <p>HTML5 was introduced, with significant improvements like new semantic elements and multimedia support.</p>
+                </div>
+            </div>
+            <div class="quiz-container">
+                <h3>Test Your Knowledge</h3>
+                <form>
+                    <p><strong>What does HTML stand for?</strong></p>
+                    <label><input type="radio" name="quiz" value="a"> Hypertext Markup Language</label><br>
+                    <label><input type="radio" name="quiz" value="b"> High-Level Text Markup Language</label><br>
+                    <label><input type="radio" name="quiz" value="c"> Hyperlink Text Markup Language</label><br>
+                    <button type="button" onclick="alert('Correct answer: Hypertext Markup Language!')">Submit</button>
+                </form>
+            </div>
+            <div class="expandable" onclick="this.classList.toggle('active')">
+                <h3>More About HTML</h3>
+                <div class="expandable-content">
+                    <p>HTML is a markup language used to create the structure of web pages. It consists of elements that define the content and layout of a page. Key elements include headings, paragraphs, links, images, and lists. HTML is the backbone of any web page and is essential for creating websites.</p>
+                </div>
+            </div>
+            <p><small><b>Here is a link for you to learn HTML from:</b></small></p>
+            <a href="https://www.w3schools.com" target="_self" title="this takes you to w3schools">Visit w3schools.com</a>
+            <button onclick="window.location.href='https://www.learn-html.org';">Learn More HTML</button>
+        </section>
+
+        <section id="about">
+            <h2>About</h2>
+            <p>
+                HTML stands for Hypertext Markup Language. It is the standard language for creating web pages and web applications. HTML defines the structure of web pages using markup. HTML elements form the building blocks of web pages.
+            </p>
+        </section>
+
+        <section id="services">
+            <h2>Services</h2>
+            <p>We offer various web development services including HTML coding, website design, and development. Our team of experts ensures high-quality and responsive websites tailored to your needs.</p>
+        </section>
+
+        <section id="video1" class="video-container">
+            <h2>Video 1</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kUMe1FH4CHE?si=a64kvXwrEnExoFfn" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section id="video2" class="video-container">
+            <h2>Video 2</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/HD13eq_Pmp8?si=DCkPXsCrDOaXMiTR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section id="video3" class="video-container">
+            <h2>Video 3</h2>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dD2EISBDjWM?si=s44jPm9rybFtg5fd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </section>
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <form action="/submit" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; NISHITH</p>
+    </footer>
+</body>
+</html>
+
+</html>
+
